@@ -108,58 +108,47 @@ ggforest <- function(dataset=NULL,
 			ylabs=NULL,
 			setTheme=TRUE 
 			){
-	#require(ggplot2)
-	ggforesttheme <- ggplot2::theme_bw()+
-                 ggplot2::theme(panel.grid=ggplot2::element_blank(),
-                                strip.background = ggplot2::element_rect(colour=NA,
-                                                                fill="grey"))
-	p <- ggplot2::ggplot()
-	if (isTRUE(Logscale)){	    
-	    p <- p + ggplot2::geom_vline(xintercept = 0.0, linetype=2, alpha=0.75)+
-		 ggplot2::geom_errorbarh(data=dataset,
-				  ggplot2::aes_string(x=log2(dataset[[x]]),
-					      y=as.factor(dataset[[y]]),
-					      xmin=log2(dataset[[lower]]),
-					      xmax=log2(dataset[[upper]])),
-				  alpha=0.9,                                  
-                              color="gray50",
-                              size=linesize,
-                              height=errorbarhheight,
-                              show.legend=F)+
-		 ggplot2::geom_point(data=dataset,          
-                      ggplot2::aes_string(x=log2(dataset[[x]]),    
-                                 y=as.factor(dataset[[y]]),
-                                 color=colorVar,                                
-                                 shape=shapeVar),
-			     show.legend = F, size=pointsize)+
-		 ggplot2::labs(x = bquote(paste(Log[2],"(",.(xlabs), ")")), y = ylabs)
 
+    ##require(ggplot2)
+    p <- ggplot2::ggplot(data = dataset)
 
-	}else{ 
-	    p <- p+ ggplot2::geom_vline(xintercept = 1.0, linetype=2, alpha=0.75)+
-	     ggplot2::geom_errorbarh(data=dataset,
-			     ggplot2::aes_string(x=x, 
-					  y=as.factor(dataset[[y]]), 
-					  xmin=lower,
-					  xmax=upper),
-			     alpha=0.9,
-			     color="gray50",
-			     size=linesize,
-			     height=errorbarhheight,
-			     show.legend=F
-			     )+
-	    ggplot2::geom_point(data=dataset,
-			 ggplot2::aes_string(x=x,
-				     y=as.factor(dataset[[y]]),
-				     color=colorVar,
-				     shape=shapeVar),
-			 show.legend = F, size=pointsize) +
-	    ggplot2::labs(x = xlabs, y = ylabs)
-	}
-	if(!is.null(manualcolors)){
-		p <- p + ggplot2::scale_color_manual(values=manualcolors)
-	
-	}
+    if (isTRUE(Logscale)){
+        xintercept <- 0.0
+        xlabs <- bquote(paste(Log[2],"(",.(xlabs), ")"))
+        trans_fun <- function(x) {
+            log2(x)
+        }
+    } else {
+        xintercept  <- 1.0
+        trans_fun <- function(x) {
+            x
+        }
+    }
+
+    p <- p + ggplot2::geom_vline(xintercept = xintercept, linetype=2, alpha=0.75)+
+        ggplot2::geom_errorbarh(data=dataset,
+                                ggplot2::aes_string(x=trans_fun(x),
+                                                    y=as.factor(y),
+                                                    xmin=trans_fun(low),
+                                                    xmax=trans_fun(upper)),
+                                alpha=0.9,                                  
+                                color="gray50",
+                                size=linesize,
+                                height=errorbarhheight,
+                                show.legend=F)+
+        ggplot2::geom_point(data=dataset,          
+                            ggplot2::aes_string(x=x,
+                                                y=as.factor(y),
+                                                color=colorVar,                                
+                                                shape=shapeVar),
+                            show.legend = F, size=pointsize)+
+        ggplot2::labs(x = xlabs, y = ylabs)
+    
+    if(!is.null(manualcolors)){
+        p <- p + ggplot2::scale_color_manual(values=manualcolors)
+        
+    }
+
 	if(!is.null(manualshapes)){
 		p <- p + ggplot2::scale_shape_manual(values=manualshapes)
 	}
@@ -178,3 +167,9 @@ ggforest <- function(dataset=NULL,
 	return(p)
 }
 
+ggforesttheme <- function() {
+    ggplot2::theme_bw()+
+        ggplot2::theme(panel.grid=ggplot2::element_blank(),
+                       strip.background = ggplot2::element_rect(colour=NA,
+                                                                fill="grey"))
+}
