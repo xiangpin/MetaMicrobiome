@@ -20,7 +20,12 @@ R CMD INSTALL MetaMicrobiome_version.tar.gz
 ```
 require("MetaMicrobiome")
 example(ggforest)
+svg("multi_measure_OR.svg")
+p2
+dev.off()
 ```
+![multiforest](./test/multi_measure_OR.png)
+Forest plot of the alpha diversity metrics (Or other your interesting variables, such as phylum or genera), The length of the error bar represents the 95% confidence interval. The left of dashed lines depicts that the metirc of the case is higher than the control. if there is not overlap between the dashed lines and the error bar, which shows that there are significantly difference between the case and the normal.
 ##Documentation
 
 
