@@ -4,9 +4,10 @@ MetaMicrobiome was designed to performance the meta-analysis, visualization and 
 These instructions will get you a copy of the package and running on your local machine for using, development and testing purpose.
 ###Dependencies
 MetaMicrobiome requires the packages of [metafor](http://www.metafor-project.org/doku.php/installation), [eipR](https://cran.r-project.org/web/packages/epiR/index.html), [pROC](https://cran.r-project.org/web/packages/pROC/index.html), [caret](https://cran.r-project.org/web/packages/caret/index.html), [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html), [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) and [tidyr](https://cran.r-project.org/web/packages/tidyr/index.html)
-###Installing
+###Installing and Testing
 ####Install the developement version from GitHub:
 ```
+require("devtools")
 devtools::install_github('xiangpin/MetaMicrobiome')
 ```
 Or 
