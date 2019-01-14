@@ -17,8 +17,8 @@
 ##' @examples
 ##'
 ##' library("MetaMicrobiome")
-##' file <- system.file("data", package="MetaMicrobiome", "Baxter_16_alpha_data.csv")
-##' data <- read.csv(file,header=TRUE, check.names=FALSE)
+##' testfile <- system.file("data", package="MetaMicrobiome", "Baxter_16_alpha_data.csv")
+##' data <- read.csv(testfile, header=TRUE, check.names=FALSE)
 ##' thresVetor <- getthresholds(dataset=data, 
 ##'			c("Shannon", "Observe", "J"),
 ##'			type="median")
@@ -60,8 +60,8 @@ high_low_vector <- function(var_of_interest=NULL, dataset=NULL, threshold=NULL){
 ##' @examples
 ##'
 ##' library("MetaMicrobiome")
-##' file <- system.file("data", package="MetaMicrobiome", "Baxter_16_alpha_data.csv")
-##' data <- read.csv(file, header=TRUE, check.names=FALSE)
+##' testfile <- system.file("data", package="MetaMicrobiome", "Baxter_16_alpha_data.csv")
+##' data <- read.csv(testfile, header=TRUE, check.names=FALSE)
 ##' thresVetor <- getthresholds(dataset=data, 
 ##'				c("Shannon", "Observe", "J"), 
 ##'				type="median")
