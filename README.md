@@ -8,7 +8,6 @@ These instructions will get you a copy of the package and running on your local 
 
 MetaMicrobiome requires the packages of [metafor](http://www.metafor-project.org/doku.php/installation), [eipR](https://cran.r-project.org/web/packages/epiR/index.html), [pROC](https://cran.r-project.org/web/packages/pROC/index.html), [caret](https://cran.r-project.org/web/packages/caret/index.html), [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html), [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) and [tidyr](https://cran.r-project.org/web/packages/tidyr/index.html)
 ### Installing and Testing
-
 #### Install the developement version from GitHub:
 
 ```
@@ -38,12 +37,12 @@ Forest plot of the alpha diversity metrics (Or other your interesting variables,
 
 
 ## Authors
-
 Shunagbin Xu  
 Email: xshuangbin@163.com  
 Github: https://github.com/xiangpin/
-
 ## Citation
 
 ## Contributing
 
+## License
+The package is made available for academic or non-commercial purposes only. The license is for a copy of the program for an unlimited term. Individuals requesting a license for commercial use must pay for a commercial license.
