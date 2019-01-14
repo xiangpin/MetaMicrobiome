@@ -1,0 +1,19 @@
+Package: MetaMicrobiome
+Type: Package
+Title: an R package for meta-analysis and visualization of microbiome.
+Version: 1.0
+Date: 2019-01-04
+Author: Shuangbin Xu
+Maintainer: Shuangbin Xu <xshuangbin@163.com>
+Description: 'MetaMicrobiome' 
+Depends: 
+    epiR,
+    metafor
+Imports:
+    ggplot2,
+    dplyr,
+    tidyr,
+    caret,
+    pROC
+License: GPL (>= 2.0)
+RoxygenNote: 6.1.1
