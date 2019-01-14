@@ -1,6 +1,6 @@
 Package: MetaMicrobiome
 Type: Package
-Title: an R package for meta-analysis and visualization of microbiome.
+Title: An R package for meta-analysis and visualization of Microbiome.
 Version: 1.0
 Date: 2019-01-04
 Author: Shuangbin Xu
