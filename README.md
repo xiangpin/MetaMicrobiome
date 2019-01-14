@@ -41,8 +41,8 @@ Shunagbin Xu
 Email: xshuangbin@163.com  
 Github: https://github.com/xiangpin/
 ## Citation
-
+```
+citation("MetaMicrobiome")
+```
 ## Contributing
-
-## License
-The package is made available for academic or non-commercial purposes only. The license is for a copy of the program for an unlimited term. Individuals requesting a license for commercial use must pay for a commercial license.
+Please note that the 'MetaMicrobiome' package is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
