@@ -5,7 +5,7 @@ Version: 1.0
 Date: 2019-01-04
 Author: Shuangbin Xu
 Maintainer: Shuangbin Xu <xshuangbin@163.com>
-Description: 'MetaMicrobiome' 
+Description: MetaMicrobiome was designed to performance the meta-analysis, visualization and the module building. MetaMicrobiome provides function for computing the count data for the measures of risk and a chi-squared test. the package also provides a function for creating forest plots for the results of the measures of risk. Moreover, the package also provides functions for the module building and testing based on the randomforest, and a function for the visualization for the result with the ROC curves. 
 Depends: 
     epiR,
     metafor
