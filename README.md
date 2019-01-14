@@ -15,6 +15,11 @@ git clone https://github.com/xiangpin/MetaMicrobiome.git
 R CMD build MetaMicrobiome
 R CMD INSTALL MetaMicrobiome_version.tar.gz
 ```
+####Try it out
+```
+require("MetaMicrobiome")
+example(ggforest)
+```
 ##Documentation
 
 
