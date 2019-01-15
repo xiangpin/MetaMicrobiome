@@ -160,7 +160,7 @@ ggforest <- function(dataset=NULL,
 	
 	}
 	if (isTRUE(setTheme)){
-		p <- p + ggforesttheme
+		p <- p + ggforesttheme()
 	}
 	return(p)
 }
