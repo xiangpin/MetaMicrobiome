@@ -109,28 +109,28 @@ ggforest <- function(dataset=NULL,
 			setTheme=TRUE 
 			){
 
-    ##require(ggplot2)
-    p <- ggplot2::ggplot(data = dataset)
-
     if (isTRUE(Logscale)){
         xintercept <- 0.0
         xlabs <- bquote(paste(Log[2],"(",.(xlabs), ")"))
-        trans_fun <- function(x) {
-            log2(x)
-        }
+		dataset[x] <- log2(dataset[[x]])
+		dataset[lower] <- log2(dataset[[lower]])
+		dataset[upper] <- log2(dataset[[upper]])
+        #trans_fun <- function(x) {
+        #    log2(x)
+        #}
     } else {
         xintercept  <- 1.0
-        trans_fun <- function(x) {
-            x
-        }
+        #trans_fun <- function(x) {
+        #    x
+        #}
     }
-
+	p <- ggplot2::ggplot(data=dataset)+
     p <- p + ggplot2::geom_vline(xintercept = xintercept, linetype=2, alpha=0.75)+
         ggplot2::geom_errorbarh(data=dataset,
-                                ggplot2::aes_string(x=trans_fun(x),
-                                                    y=as.factor(y),
-                                                    xmin=trans_fun(lower),
-                                                    xmax=trans_fun(upper)),
+                                ggplot2::aes_string(x=x,
+                                                    y=y,
+                                                    xmin=lower,
+                                                    xmax=upper),
                                 alpha=0.9,                                  
                                 color="gray50",
                                 size=linesize,
@@ -138,7 +138,7 @@ ggforest <- function(dataset=NULL,
                                 show.legend=F)+
         ggplot2::geom_point(data=dataset,          
                             ggplot2::aes_string(x=x,
-                                                y=as.factor(y),
+                                                y=y,
                                                 color=colorVar,                                
                                                 shape=shapeVar),
                             show.legend = F, size=pointsize)+
