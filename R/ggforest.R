@@ -124,9 +124,9 @@ ggforest <- function(dataset=NULL,
         #    x
         #}
     }
-	p <- ggplot2::ggplot(data=dataset)+
-    p <- p + ggplot2::geom_vline(xintercept = xintercept, linetype=2, alpha=0.75)+
-        ggplot2::geom_errorbarh(data=dataset,
+	p <- ggplot2::ggplot(data=dataset) +
+        ggplot2::geom_vline(xintercept = xintercept, linetype=2, alpha=0.75)+
+        ggplot2::geom_errorbarh(
                                 ggplot2::aes_string(x=x,
                                                     y=y,
                                                     xmin=lower,
@@ -136,19 +136,17 @@ ggforest <- function(dataset=NULL,
                                 size=linesize,
                                 height=errorbarhheight,
                                 show.legend=F)+
-        ggplot2::geom_point(data=dataset,          
+        ggplot2::geom_point(#data=dataset,          
                             ggplot2::aes_string(x=x,
                                                 y=y,
                                                 color=colorVar,                                
                                                 shape=shapeVar),
                             show.legend = F, size=pointsize)+
         ggplot2::labs(x = xlabs, y = ylabs)
-    
     if(!is.null(manualcolors)){
         p <- p + ggplot2::scale_color_manual(values=manualcolors)
         
     }
-
 	if(!is.null(manualshapes)){
 		p <- p + ggplot2::scale_shape_manual(values=manualshapes)
 	}
@@ -157,7 +155,7 @@ ggforest <- function(dataset=NULL,
 		p <- p + ggplot2::facet_wrap(formulgrid, scale="free")
 	}
 	if (!is.null(facetx) & !is.null(facety)){
-	    	formulgrid <- as.formula(paste(c(facety, facetx), collapse= "~"))
+	    formulgrid <- as.formula(paste(c(facety, facetx), collapse= "~"))
 		p <- p + ggplot2::facet_grid(formulgrid, scales="free")
 	
 	}
