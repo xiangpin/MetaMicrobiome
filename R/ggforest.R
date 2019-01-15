@@ -1,4 +1,4 @@
-##' @title forest plot base ggplot2 with the result of RunPoolEffect and multiVarRRTab. 
+##' @title forest plot base ggplot2 with the result of RunPoolEffect and multiVarRRTab.
 ##' 
 ##' @description
 ##' Polt a forest with the result of RunPoolEffect and multiVarRRTab base-on the \code{\link[ggplot2]{ggplot}}.
@@ -125,20 +125,23 @@ ggforest <- function(dataset=NULL,
         }
     }
 
-    p <- p + ggplot2::geom_vline(xintercept = xintercept, linetype=2, alpha=0.75)+
+    .deparse <- function(x) {
+        paste0('trans_fun(', as.expression(x), ')')
+    }
+
+    p <- p + ggplot2::geom_vline(xintercept = xintercept, linetype=2, alpha=0.75) +
         ggplot2::geom_errorbarh(data=dataset,
-                                ggplot2::aes_string(x=trans_fun(x),
-                                                    y=as.factor(y),
-                                                    xmin=trans_fun(low),
-                                                    xmax=trans_fun(upper)),
+                                ggplot2::aes_string(y= paste0('as.factor(', as.expression(y), ')'),
+                                                    xmin= .deparse(lower),
+                                                    xmax= .deparse(upper)),
                                 alpha=0.9,                                  
                                 color="gray50",
                                 size=linesize,
                                 height=errorbarhheight,
                                 show.legend=F)+
         ggplot2::geom_point(data=dataset,          
-                            ggplot2::aes_string(x=x,
-                                                y=as.factor(y),
+                            ggplot2::aes_string(x= .deparse(x),
+                                                y=paste0('as.factor(', as.expression(y), ')'),
                                                 color=colorVar,                                
                                                 shape=shapeVar),
                             show.legend = F, size=pointsize)+
@@ -149,23 +152,24 @@ ggforest <- function(dataset=NULL,
         
     }
 
-	if(!is.null(manualshapes)){
-		p <- p + ggplot2::scale_shape_manual(values=manualshapes)
-	}
-	if (!is.null(facetx)){
-		formulgrid <- as.formula(paste(c("",facetx), collapse= "~"))
-		p <- p + ggplot2::facet_wrap(formulgrid, scale="free")
-	}
-	if (!is.null(facetx) & !is.null(facety)){
+    if(!is.null(manualshapes)){
+        p <- p + ggplot2::scale_shape_manual(values=manualshapes)
+    }
+    if (!is.null(facetx)){
+        formulgrid <- as.formula(paste(c("",facetx), collapse= "~"))
+        p <- p + ggplot2::facet_wrap(formulgrid, scale="free")
+    }
+    if (!is.null(facetx) & !is.null(facety)){
 	    	formulgrid <- as.formula(paste(c(facety, facetx), collapse= "~"))
-		p <- p + ggplot2::facet_grid(formulgrid, scales="free")
-	
-	}
-	if (isTRUE(setTheme)){
-		p <- p + ggforesttheme
-	}
-	return(p)
+        p <- p + ggplot2::facet_grid(formulgrid, scales="free")
+        
+    }
+    if (isTRUE(setTheme)){
+		p <- p + ggforesttheme()
+    }
+    return(p)
 }
+
 
 ggforesttheme <- function() {
     ggplot2::theme_bw()+
