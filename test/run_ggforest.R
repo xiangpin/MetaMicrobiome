@@ -31,7 +31,7 @@ p1 <- ggforest(dataset=data1,
           manualshapes=pointshape,
           x="est",
           y="study",
-          Logscale=FALSE,
+          Logscale=TRUE,
           lower="lower",
           upper="upper",
           colorVar="study",
@@ -45,9 +45,5 @@ p1 <- ggforest(dataset=data1,
           facety="group",
           setTheme=TRUE)
 
-svg("single_measure_OR.svg")
-p1
-dev.off()
-svg("multi_measure_OR.svg")
-p2
-dev.off()
+ggplot2::ggsave("single_measure_OR.svg", plot=p1)
+ggplot2::ggsave("multi_measure_OR.svg", plot=p2)
