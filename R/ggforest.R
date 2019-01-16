@@ -109,19 +109,16 @@ ggforest <- function(dataset=NULL,
 			setTheme=TRUE 
 			){
 
-    ##require(ggplot2)
-    p <- ggplot2::ggplot(data = dataset)
-
     if (isTRUE(Logscale)){
         xintercept <- 0.0
         xlabs <- bquote(paste(Log[2],"(",.(xlabs), ")"))
-        trans_fun <- function(x) {
-            log2(x)
+       trans_fun <- function(x) {
+           log2(x)
         }
     } else {
         xintercept  <- 1.0
         trans_fun <- function(x) {
-            x
+           x
         }
     }
 
@@ -129,7 +126,8 @@ ggforest <- function(dataset=NULL,
         paste0('trans_fun(', as.expression(x), ')')
     }
 
-    p <- p + ggplot2::geom_vline(xintercept = xintercept, linetype=2, alpha=0.75) +
+    p <- ggplot2::ggplot(data=dataset) +
+        ggplot2::geom_vline(xintercept = xintercept, linetype=2, alpha=0.75) +
         ggplot2::geom_errorbarh(data=dataset,
                                 ggplot2::aes_string(y= paste0('as.factor(', as.expression(y), ')'),
                                                     xmin= .deparse(lower),
@@ -139,35 +137,35 @@ ggforest <- function(dataset=NULL,
                                 size=linesize,
                                 height=errorbarhheight,
                                 show.legend=F)+
-        ggplot2::geom_point(data=dataset,          
-                            ggplot2::aes_string(x= .deparse(x),
+
+        ggplot2::geom_point(ggplot2::aes_string(x= .deparse(x),
                                                 y=paste0('as.factor(', as.expression(y), ')'),
                                                 color=colorVar,                                
                                                 shape=shapeVar),
                             show.legend = F, size=pointsize)+
         ggplot2::labs(x = xlabs, y = ylabs)
-    
+
     if(!is.null(manualcolors)){
         p <- p + ggplot2::scale_color_manual(values=manualcolors)
-        
+
     }
 
-    if(!is.null(manualshapes)){
-        p <- p + ggplot2::scale_shape_manual(values=manualshapes)
-    }
-    if (!is.null(facetx)){
-        formulgrid <- as.formula(paste(c("",facetx), collapse= "~"))
-        p <- p + ggplot2::facet_wrap(formulgrid, scale="free")
-    }
-    if (!is.null(facetx) & !is.null(facety)){
-	    	formulgrid <- as.formula(paste(c(facety, facetx), collapse= "~"))
-        p <- p + ggplot2::facet_grid(formulgrid, scales="free")
-        
-    }
-    if (isTRUE(setTheme)){
+	if(!is.null(manualshapes)){
+		p <- p + ggplot2::scale_shape_manual(values=manualshapes)
+	}
+	if (!is.null(facetx)){
+		formulgrid <- as.formula(paste(c("",facetx), collapse= "~"))
+		p <- p + ggplot2::facet_wrap(formulgrid, scale="free")
+	}
+	if (!is.null(facetx) & !is.null(facety)){
+	    formulgrid <- as.formula(paste(c(facety, facetx), collapse= "~"))
+		p <- p + ggplot2::facet_grid(formulgrid, scales="free")
+	
+	}
+	if (isTRUE(setTheme)){
 		p <- p + ggforesttheme()
-    }
-    return(p)
+	}
+	return(p)
 }
 
 

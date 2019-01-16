@@ -39,7 +39,10 @@ Forest plot of the alpha diversity metrics (Or other your interesting variables,
 ## Authors
 Shunagbin Xu  
 Email: xshuangbin@163.com  
-Github: https://github.com/xiangpin/
+Github: https://github.com/xiangpin/   
+Guangchuang Yu  
+Email: guangchuangyu@gmail.com  
+Github: https://github.com/GuangchuangYu/  
 ## Citation
 ```
 citation("MetaMicrobiome")

@@ -17,7 +17,7 @@
 ##' library("MetaMicrobiome")
 ##' data <- read.csv(system.file("data", 
 ##'          package="MetaMicrobiome", 
-##'	      "Baxter_16_alpha_data.csv")) 
+##'	      "Baxter_16_alpha_data.csv.gz")) 
 ##' thresVetor <- getthresholds(dataset=data, 
 ##'               var_of_interest=c("Shannon", 
 ##'                                 "Observe"), 

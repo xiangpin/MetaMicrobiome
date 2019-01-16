@@ -42,7 +42,7 @@ study <- c("Baxter_16",
 data <- lapply(study, 
         function(x){read.csv(system.file("data", 
                                           package="MetaMicrobiome", 
-                                          paste(x, "_alpha_data.csv", sep="")))})
+                                          paste(x, "_alpha_data.csv.gz", sep="")))})
 names(data) <- study
 threholds <- mapply(getthresholds, data, 
                     MoreArgs=list(var_of_interest=c("Observe", "Shannon", "J"),
