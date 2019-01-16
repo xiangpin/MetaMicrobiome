@@ -1,4 +1,4 @@
-##' @title forest plot base ggplot2 with the result of RunPoolEffect and multiVarRRTab. 
+##' @title forest plot base ggplot2 with the result of RunPoolEffect and multiVarRRTab.
 ##' 
 ##' @description
 ##' Polt a forest with the result of RunPoolEffect and multiVarRRTab base-on the \code{\link[ggplot2]{ggplot}}.
@@ -112,41 +112,44 @@ ggforest <- function(dataset=NULL,
     if (isTRUE(Logscale)){
         xintercept <- 0.0
         xlabs <- bquote(paste(Log[2],"(",.(xlabs), ")"))
-		dataset[x] <- log2(dataset[[x]])
-		dataset[lower] <- log2(dataset[[lower]])
-		dataset[upper] <- log2(dataset[[upper]])
-        #trans_fun <- function(x) {
-        #    log2(x)
-        #}
+       trans_fun <- function(x) {
+           log2(x)
+        }
     } else {
         xintercept  <- 1.0
-        #trans_fun <- function(x) {
-        #    x
-        #}
+        trans_fun <- function(x) {
+           x
+        }
     }
-	p <- ggplot2::ggplot(data=dataset) +
-        ggplot2::geom_vline(xintercept = xintercept, linetype=2, alpha=0.75)+
-        ggplot2::geom_errorbarh(
-                                ggplot2::aes_string(x=x,
-                                                    y=y,
-                                                    xmin=lower,
-                                                    xmax=upper),
+
+    .deparse <- function(x) {
+        paste0('trans_fun(', as.expression(x), ')')
+    }
+
+    p <- ggplot2::ggplot(data=dataset) +
+        ggplot2::geom_vline(xintercept = xintercept, linetype=2, alpha=0.75) +
+        ggplot2::geom_errorbarh(data=dataset,
+                                ggplot2::aes_string(y= paste0('as.factor(', as.expression(y), ')'),
+                                                    xmin= .deparse(lower),
+                                                    xmax= .deparse(upper)),
                                 alpha=0.9,                                  
                                 color="gray50",
                                 size=linesize,
                                 height=errorbarhheight,
                                 show.legend=F)+
-        ggplot2::geom_point(#data=dataset,          
-                            ggplot2::aes_string(x=x,
-                                                y=y,
+
+        ggplot2::geom_point(ggplot2::aes_string(x= .deparse(x),
+                                                y=paste0('as.factor(', as.expression(y), ')'),
                                                 color=colorVar,                                
                                                 shape=shapeVar),
                             show.legend = F, size=pointsize)+
         ggplot2::labs(x = xlabs, y = ylabs)
+
     if(!is.null(manualcolors)){
         p <- p + ggplot2::scale_color_manual(values=manualcolors)
-        
+
     }
+
 	if(!is.null(manualshapes)){
 		p <- p + ggplot2::scale_shape_manual(values=manualshapes)
 	}
@@ -164,6 +167,7 @@ ggforest <- function(dataset=NULL,
 	}
 	return(p)
 }
+
 
 ggforesttheme <- function() {
     ggplot2::theme_bw()+
