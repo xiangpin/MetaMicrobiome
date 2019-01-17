@@ -65,10 +65,10 @@
 ##'                                       SIMPLIFY=FALSE)) 
 ##' head(pooledREML)
 
-RunPoolEffect <- function(var_of_interest=NULL, dataset=NULL, measure="OR", methodtype="REML"){
+RunPoolEffect <- function(var_of_interest, dataset, measure="OR", methodtype="REML"){
 	dataset <- dplyr::filter(dataset, measure==var_of_interest)
-	rr_pooled_test <- metafor::rma(ai=tpos, bi=cpos, 
-					ci=tneg, di=cneg, data=dataset,
+	rr_pooled_test <- metafor::rma(ai=eval(parse(text="tpos")), bi=eval(parse(text="cpos")), 
+					ci=eval(parse(text="tneg")), di=eval(parse(text="cneg")), data=dataset,
                                    measure = measure, method = methodtype)
 	est <- exp(rr_pooled_test$b[[1, 1]])
 	lower <- exp(rr_pooled_test$ci.lb)
