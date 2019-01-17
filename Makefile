@@ -2,14 +2,15 @@ PKGNAME := $(shell sed -n "s/Package: *\([^ ]*\)/\1/p" DESCRIPTION)
 PKGVERS := $(shell sed -n "s/Version: *\([^ ]*\)/\1/p" DESCRIPTION)
 PKGSRC  := $(shell basename `pwd`)
 
-all: rd check clean
-
-alldocs:
+all: rd pdf check clean
 
 rd:
 	Rscript -e 'library(methods); devtools::document()'
 
-build: rd
+pdf: rd
+	R CMD Rd2pdf --no-previw --force ../$(PKGSRC)
+
+build: pdf
 	cd ..;\
 	R CMD build $(PKGSRC)
 
@@ -17,7 +18,7 @@ check: build
 	cd ..;\
 	R CMD check --as-cran $(PKGNAME)_$(PKGVERS).tar.gz
 
-install: build
+install: check
 	cd ..;\
 	R CMD INSTALL $(PKGNAME)_$(PKGVERS).tar.gz
 
