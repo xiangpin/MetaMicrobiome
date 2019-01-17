@@ -4,7 +4,7 @@
 \alias{RunPoolEffect}
 \title{Calcutate effect sizes via linear (Mixed-Effects) models}
 \usage{
-RunPoolEffect(var_of_interest = NULL, dataset = NULL, measure = "OR",
+RunPoolEffect(var_of_interest, dataset, measure = "OR",
   methodtype = "REML")
 }
 \arguments{
