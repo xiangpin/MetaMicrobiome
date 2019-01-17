@@ -28,7 +28,7 @@ TODO
 
 library("MetaMicrobiome")
 testfile <- system.file("data", package="MetaMicrobiome", "Baxter_16_alpha_data.csv.gz")
-data <- read.csv(testfile,header=TRUE, check.names=FALSE)
+data <- read.csv(testfile, header=TRUE, check.names=FALSE)
 thresVetor <- getthresholds(dataset=data, 
 		c("Shannon", "Observe", "J"),
 		type="median")
