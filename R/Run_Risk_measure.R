@@ -107,7 +107,7 @@ multiRunRR <- function(multiHighLow=NULL, metadavector=NULL, prefix="Disease", g
 ##' 
 ##'
 ##'
-tidy_data <- function(multiRunRRTab=NULL, var_of_int=NULL){
+tidy_data <- function(multiRunRRTab, var_of_int){
 	testdata <- data.frame(multiRunRRTab[[var_of_int]][["test_values"]])
 	countdata <- data.frame(multiRunRRTab[[var_of_int]][["continTab"]])
 	countdata <- tidyr::unite(countdata, "group", colnames(countdata)[1:2])
@@ -139,7 +139,7 @@ tidy_data <- function(multiRunRRTab=NULL, var_of_int=NULL){
 ##'
 ##'
 
-multiVarRRTab <- function(multiRunRRTab=NULL, var_of_interest=NULL){
+multiVarRRTab <- function(multiRunRRTab, var_of_interest){
 	dat <- dplyr::bind_rows(mapply(tidy_data, var_of_interest, 
 		MoreArgs=list(multiRunRRTab=multiRunRRTab),
 		SIMPLIFY=FALSE))

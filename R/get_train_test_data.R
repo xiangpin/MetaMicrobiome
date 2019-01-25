@@ -15,7 +15,7 @@
 #'
 #'
 #' 
-get_train_test_data <- function(test_study=NULL, datasets=NULL){
+get_train_test_data <- function(test_study, datasets){
        testdata <- datasets[test_study]
        trainstudy <- setdiff(names(datasets), test_study)
        traindata <- dplyr::bind_rows(datasets[trainstudy])

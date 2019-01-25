@@ -89,23 +89,23 @@
 ##'          setTheme=TRUE)
 
 
-ggforest <- function(dataset=NULL, 
-			manualcolors=NULL, 
-			manualshapes=NULL,
+ggforest <- function(dataset, 
+			manualcolors, 
+			manualshapes,
 			Logscale=TRUE,
-			x=NULL,
-			y=NULL,
-			lower=NULL,
-			upper=NULL,
+			x,
+			y,
+			lower,
+			upper,
 			pointsize=2,
 			linesize=0.4,
 			errorbarhheight=0.2,
-			colorVar=NULL,
-			shapeVar=NULL,
-			facetx=NULL,
-			facety=NULL,
-			xlabs=NULL,
-			ylabs=NULL,
+			colorVar,
+			shapeVar,
+			facetx,
+			facety,
+			xlabs,
+			ylabs,
 			setTheme=TRUE 
 			){
 

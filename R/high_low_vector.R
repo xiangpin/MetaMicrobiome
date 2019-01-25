@@ -27,7 +27,7 @@
 ##'		var_of_interest="Shannon")
 ##' head(highlowVector)
 ##' 
-high_low_vector <- function(var_of_interest=NULL, dataset=NULL, threshold=NULL){
+high_low_vector <- function(var_of_interest, dataset, threshold){
     	if (length(var_of_interest) >1 ){
 		print ("error: the var_of_interest should be one element.")
 		break 
@@ -74,7 +74,7 @@ high_low_vector <- function(var_of_interest=NULL, dataset=NULL, threshold=NULL){
 ##'
 ##'
 
-MultiHighLow <- function(var_of_interest=NULL, dataset=NULL, threshold=NULL){
+MultiHighLow <- function(var_of_interest, dataset, threshold){
     	threshold <- threshold[var_of_interest]
        confTab <- mapply(high_low_vector, var_of_interest,
 			    MoreArgs=list(dataset=dataset, threshold=threshold),

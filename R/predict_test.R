@@ -19,12 +19,12 @@
 #' @examples
 #'
 #'
-predict_test <- function(model=NULL, 
-			    teststudy=NULL, 
-			    dataset=NULL, 
-			    classvariable=NULL, 
-			    classtype=NULL, 
-			    Trainstudy=NULL){
+predict_test <- function(model, 
+			    teststudy, 
+			    dataset, 
+			    classvariable, 
+			    classtype, 
+			    Trainstudy){
        if (!is.null(teststudy)){
 	    if (teststudy %in% names(dataset)){
 	       data <- dataset[[teststudy]]
@@ -82,11 +82,11 @@ predict_test <- function(model=NULL,
 #'
 #'
 
-get_mapply_predict_test <- function(study=NULL, 
-					 dataset=NULL, 
-					 models=NULL, 
-	  			        classvariable=NULL, 
-				        classtype=NULL){
+get_mapply_predict_test <- function(study, 
+					 dataset, 
+					 models, 
+	  			        classvariable, 
+				        classtype){
     	trainmodel <- models[[study]]
 	subdata <- dataset[setdiff(names(dataset), study)]
 	leavestudy <- setdiff(names(dataset), study)

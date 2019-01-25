@@ -24,12 +24,12 @@
 #'
 #'
 #'
-make_RF_model <- function(train_data=NULL,
-			     study=NULL, 
+make_RF_model <- function(train_data,
+			     study, 
 			     numtree=500, 
-			     number_try=NULL, 
+			     number_try, 
 			     numbercv=10, 
-			     classvariable=NULL){
+			     classvariable){
     	if (!is.null(study)){
 	    if (study %in% names(train_data)){
 		train_data <- train_data[[study]][["traindata"]]
@@ -84,10 +84,10 @@ make_RF_model <- function(train_data=NULL,
 #'
 
 
-predict_train <- function(model=NULL, 
-			     study=NULL, 
+predict_train <- function(model, 
+			     study, 
 			     minus=FALSE, 
-			     classtype=NULL){
+			     classtype){
 	modelpred <- model$pred
 	rocsenspe <- pROC::roc(modelpred$obs, modelpred[,classtype])
 	roccurve <- data.frame(cbind(Sensitivity=rocsenspe$sensitivities, Specificity=rocsenspe$specificities))

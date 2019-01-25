@@ -23,8 +23,8 @@
 ##'                                 "Observe"), 
 ##'               type="median")
 ##' 
-getthresholds <- function(dataset=NULL, 
-			     var_of_interest=NULL, 
+getthresholds <- function(dataset, 
+			     var_of_interest, 
 			     type="median"){
 	thresvalue <- apply(dplyr::select(dataset, 
 			      dplyr::one_of(var_of_interest)), 
