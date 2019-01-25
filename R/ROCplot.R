@@ -22,23 +22,27 @@
 #'
 #'
 #'
-ROCplot <- function(rocplotdata=NULL,
-		      x=NULL, 
-		      y=NULL, 
-		      xlab=NULL,
-		      ylab=NULL,
-		      roccolors=NULL, 
+ROCplot <- function(rocplotdata,
+		      x, 
+		      y, 
+		      xlab,
+		      ylab,
+		      roccolors, 
 		      legendkeyheight=0.05,
 		      legendposition=c(0.67,0.17), 
 		      ...){
        #require(ggplot2)
        p <- ggplot2::ggplot() +
            ggplot2::geom_abline(intercept = 1, slope = 1, color='grey')+                                                           
-	    ggplot2::geom_path(data=rocplotdata,
+	       ggplot2::geom_path(data=rocplotdata,
                      ggplot2::aes_string(x, y, ...))+
            ggplot2::scale_x_reverse(expand = c(0,0)) +
-           ggplot2::scale_y_continuous(expand=c(0,0)) +
-           ggplot2::scale_color_manual(values=roccolors) +
+           ggplot2::scale_y_continuous(expand=c(0,0))
+	  if (!is.null(roccolors)) {
+			p <- p +
+           ggplot2::scale_color_manual(values=roccolors) 
+	  }
+	  	   p <- p +
            ggplot2::xlab(xlab)+
            ggplot2::ylab(ylab)+
            ggplot2::theme_bw() +
