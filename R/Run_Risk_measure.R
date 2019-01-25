@@ -29,7 +29,7 @@
 ##' 
 ##'
 ##' 
-run_rr <- function(var_high_low=NULL, metadavector=NULL, prefix="Group", grouptype="Case", 
+run_rr <- function(var_high_low, metadavector, prefix="Group", grouptype="Case", 
 		     method="cohort.count", conf.level=0.95, score="OR.strata.score",...){
 	metadavector <- factor(ifelse(metadavector[,prefix]==grouptype, 
 				invisible("Y"), invisible("N")), 
