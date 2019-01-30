@@ -3,6 +3,7 @@
 export(MultiHighLow)
 export(ROCplot)
 export(RunPoolEffect)
+export(droptax)
 export(get_mapply_predict_test)
 export(get_train_test_data)
 export(getthresholds)

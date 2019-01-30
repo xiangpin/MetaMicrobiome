@@ -84,7 +84,7 @@
 ##'          errorbarhheight=0.05,
 ##'          xlabs="Odds Ratio",
 ##'          ylabs="",
-##'	      facetx="measure",
+##'	         facetx="measure",
 ##'          facety="group",
 ##'          setTheme=TRUE)
 
@@ -102,8 +102,8 @@ ggforest <- function(dataset,
 			errorbarhheight=0.2,
 			colorVar,
 			shapeVar,
-			facetx,
-			facety,
+			facetx=NULL,
+			facety=NULL,
 			xlabs,
 			ylabs,
 			setTheme=TRUE 

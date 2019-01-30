@@ -4,7 +4,7 @@
 \alias{multiVarRRTab}
 \title{collate results for summary measure of multi-variables}
 \usage{
-multiVarRRTab(multiRunRRTab = NULL, var_of_interest = NULL)
+multiVarRRTab(multiRunRRTab, var_of_interest)
 }
 \arguments{
 \item{multiRunRRTab}{list, the results of the}

@@ -4,8 +4,7 @@
 \alias{get_mapply_predict_test}
 \title{model predictions}
 \usage{
-get_mapply_predict_test(study = NULL, dataset = NULL, models = NULL,
-  classvariable = NULL, classtype = NULL)
+get_mapply_predict_test(study, dataset, models, classvariable, classtype)
 }
 \arguments{
 \item{study}{character, the names of the specified test dataset.}

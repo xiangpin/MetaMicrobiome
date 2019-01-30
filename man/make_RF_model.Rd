@@ -4,8 +4,8 @@
 \alias{make_RF_model}
 \title{model training}
 \usage{
-make_RF_model(train_data = NULL, study = NULL, numtree = 500,
-  number_try = NULL, numbercv = 10, classvariable = NULL)
+make_RF_model(train_data, study, numtree = 500, number_try,
+  numbercv = 10, classvariable)
 }
 \arguments{
 \item{train_data}{list or dataframe, the dataframe contianed the features or a list 

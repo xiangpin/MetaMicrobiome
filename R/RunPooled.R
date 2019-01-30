@@ -29,8 +29,8 @@
 ##'	      	"Zeller_15")
 ##' data <- lapply(study, 
 ##'         function(x){read.csv(system.file("data", 
-##'                                           package="MetaMicrobiome", 
-##'                                           paste(x, "_alpha_data.csv.gz", sep="")))})
+##'                     package="MetaMicrobiome", 
+##'                     paste(x, "_alpha_data.csv.gz", sep="")))})
 ##' names(data) <- study
 ##' threholds <- mapply(getthresholds, data, 
 ##'                     MoreArgs=list(var_of_interest=c("Observe", "Shannon", "J"),
@@ -60,9 +60,9 @@
 ##' multistudyRRresult2
 ##' pooledREML <- dplyr::bind_rows(mapply(RunPoolEffect,
 ##'						c("Observe", "Shannon", "J"),
-##'                                       MoreArgs=list(dataset=multistudyRRresult2,
-##'                                       methodtype="REML"),
-##'                                       SIMPLIFY=FALSE)) 
+##'                     MoreArgs=list(dataset=multistudyRRresult2,
+##'                                   methodtype="REML"),
+##'                     SIMPLIFY=FALSE)) 
 ##' head(pooledREML)
 
 RunPoolEffect <- function(var_of_interest, dataset, measure="OR", methodtype="REML"){

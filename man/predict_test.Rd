@@ -4,8 +4,8 @@
 \alias{predict_test}
 \title{Model Predictions}
 \usage{
-predict_test(model = NULL, teststudy = NULL, dataset = NULL,
-  classvariable = NULL, classtype = NULL, Trainstudy = NULL)
+predict_test(model, teststudy, dataset, classvariable, classtype,
+  Trainstudy)
 }
 \arguments{
 \item{model}{object, a model object for predict.}

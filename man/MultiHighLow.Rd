@@ -4,8 +4,7 @@
 \alias{MultiHighLow}
 \title{creat list of vectors with high/low versus the threshold.}
 \usage{
-MultiHighLow(var_of_interest = NULL, dataset = NULL,
-  threshold = NULL)
+MultiHighLow(var_of_interest, dataset, threshold)
 }
 \arguments{
 \item{var_of_interest}{vector, the vector of interesting variables.}

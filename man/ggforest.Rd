@@ -4,11 +4,9 @@
 \alias{ggforest}
 \title{forest plot base ggplot2 with the result of RunPoolEffect and multiVarRRTab.}
 \usage{
-ggforest(dataset = NULL, manualcolors = NULL, manualshapes = NULL,
-  Logscale = TRUE, x = NULL, y = NULL, lower = NULL,
-  upper = NULL, pointsize = 2, linesize = 0.4,
-  errorbarhheight = 0.2, colorVar = NULL, shapeVar = NULL,
-  facetx = NULL, facety = NULL, xlabs = NULL, ylabs = NULL,
+ggforest(dataset, manualcolors, manualshapes, Logscale = TRUE, x, y,
+  lower, upper, pointsize = 2, linesize = 0.4, errorbarhheight = 0.2,
+  colorVar, shapeVar, facetx = NULL, facety = NULL, xlabs, ylabs,
   setTheme = TRUE)
 }
 \arguments{
@@ -111,7 +109,7 @@ p2 <- ggforest(dataset=data2,
          errorbarhheight=0.05,
          xlabs="Odds Ratio",
          ylabs="",
-      facetx="measure",
+         facetx="measure",
          facety="group",
          setTheme=TRUE)
 }

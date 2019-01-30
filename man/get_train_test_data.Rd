@@ -4,7 +4,7 @@
 \alias{get_train_test_data}
 \title{get train and test data}
 \usage{
-get_train_test_data(test_study = NULL, datasets = NULL)
+get_train_test_data(test_study, datasets)
 }
 \arguments{
 \item{test_study}{character, the names of the list datasets.}

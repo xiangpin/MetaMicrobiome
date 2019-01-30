@@ -4,8 +4,7 @@
 \alias{predict_train}
 \title{models results}
 \usage{
-predict_train(model = NULL, study = NULL, minus = FALSE,
-  classtype = NULL)
+predict_train(model, study, minus = FALSE, classtype)
 }
 \arguments{
 \item{model}{object, a model object.}

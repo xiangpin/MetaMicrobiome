@@ -4,7 +4,7 @@
 \alias{run_rr}
 \title{Summary measures base on epiR}
 \usage{
-run_rr(var_high_low = NULL, metadavector = NULL, prefix = "Group",
+run_rr(var_high_low, metadavector, prefix = "Group",
   grouptype = "Case", method = "cohort.count", conf.level = 0.95,
   score = "OR.strata.score", ...)
 }

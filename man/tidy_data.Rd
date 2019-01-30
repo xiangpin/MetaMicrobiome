@@ -4,7 +4,7 @@
 \alias{tidy_data}
 \title{collate results for summary measure}
 \usage{
-tidy_data(multiRunRRTab = NULL, var_of_int = NULL)
+tidy_data(multiRunRRTab, var_of_int)
 }
 \arguments{
 \item{multiRunRRTab}{list, the results of}

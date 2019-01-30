@@ -4,8 +4,7 @@
 \alias{high_low_vector}
 \title{creat a vector with high/low versus the threshold.}
 \usage{
-high_low_vector(var_of_interest = NULL, dataset = NULL,
-  threshold = NULL)
+high_low_vector(var_of_interest, dataset, threshold)
 }
 \arguments{
 \item{var_of_interest}{character, the interesting variable names.}

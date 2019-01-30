@@ -4,8 +4,7 @@
 \alias{ROCplot}
 \title{plot the roc curve}
 \usage{
-ROCplot(rocplotdata = NULL, x = NULL, y = NULL, xlab = NULL,
-  ylab = NULL, roccolors = NULL, legendkeyheight = 0.05,
+ROCplot(rocplotdata, x, y, xlab, ylab, roccolors, legendkeyheight = 0.05,
   legendposition = c(0.67, 0.17), ...)
 }
 \arguments{

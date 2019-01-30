@@ -4,8 +4,7 @@
 \alias{getthresholds}
 \title{Creat the thresholds vector.}
 \usage{
-getthresholds(dataset = NULL, var_of_interest = NULL,
-  type = "median")
+getthresholds(dataset, var_of_interest, type = "median")
 }
 \arguments{
 \item{dataset}{dataframe, a dataframe contain interesting variable.}
