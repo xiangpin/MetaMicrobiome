@@ -11,7 +11,6 @@ MetaMicrobiome requires the packages of [metafor](http://www.metafor-project.org
 #### Install the developement version from GitHub:
 
 ```
-require("devtools")
 devtools::install_github('xiangpin/MetaMicrobiome')
 ```
 Or 
